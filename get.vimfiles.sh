@@ -8,13 +8,13 @@
 #   curl https://raw.github.com/coderifous/dotfiles/master/get.vimfiles.sh | sh
 
 # Put your github username on the next line
-REPO_OWNER="ccalvert"
+REPO_OWNER="coderifous"
 # REPO_HOST will generally be "github.com", but may be changed to something else
 # if you're using a different git hosting service or if you have configured
 # an alias in ~/.ssh/config, e.g. because you're using multiple identities.
-REPO_HOST="github-personal"
+REPO_HOST="github.com"
 # The next line should contain the name of the repository.
-REPO_NAME="dotfiles-1"
+REPO_NAME="dotfiles"
 GIT_REPO_URL="git@$REPO_HOST:$REPO_OWNER/$REPO_NAME.git"
 
 echo -e "\033[32mDownloading repository."
