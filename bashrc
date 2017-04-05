@@ -246,13 +246,17 @@ EOS
 }
 
 function pairwith {
-  if [ $1 ]; then
-    if [ $1 == "self" ]; then
+  other="$*"
+  if [ "$other" ]; then
+    if [ "$other" == "self" ]; then
       unset GIT_AUTHOR_NAME
       echo Pairing with self... ಠ_ಠ
     else
-      export GIT_AUTHOR_NAME="${1} & Garvin"
-      echo $1 > ~/.last_pairwith
+      if [[ $other =~ , ]]; then
+        other="$other,"
+      fi
+      export GIT_AUTHOR_NAME="$other & Garvin"
+      echo $other > ~/.last_pairwith
       echo Committing as ${GIT_AUTHOR_NAME}
     fi
   else
