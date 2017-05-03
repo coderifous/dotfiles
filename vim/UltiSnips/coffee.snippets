@@ -56,6 +56,23 @@ app.directive "${1:name}", ->
   ${4:templateUrl: "$5"}
 endsnippet
 
+snippet app.com "app.component" bA
+app.component "${1:name}",
+
+  ${2:bindings:
+    foo: '<'
+}
+  ${4:template: """
+  """
+}
+  ${5:controller: [ "foo", (foo) ->
+
+    true
+
+  ]
+}
+endsnippet
+
 snippet app.fac "app.factory" bA
 app.factory "${1:name}", ->
   $2
