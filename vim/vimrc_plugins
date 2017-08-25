@@ -136,3 +136,7 @@ let g:TmuxTargetPane    = "1.0"
 let g:TmuxRspecOpts     = "--require ./.rspec/quickfix_formatter --format QuickfixFormatter:tmp/quickfix --require ./.rspec/progress_with_failures --format ProgressWithFailures --colour --loadby mtime --drb"
 set errorformat=%f:%l\ %n\ %m
 
+" dash related mappings
+nnoremap <Leader>D :Dash <cword><cr>
+cabbr D Dash
+
