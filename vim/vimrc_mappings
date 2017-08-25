@@ -184,14 +184,3 @@ function! s:toggle_ruby_hash_style()
 endfunction
 nnoremap <Leader>% :call <SID>toggle_ruby_hash_style()<cr>
 
-" goofy helpers to swap lines
-"
-" aaa
-" bbb
-" ccc
-" ddd
-"
-" If you ,dd on the aaa line and then ,p on the ccc line they will trade places.
-" Won't work if line is at bottom of file.
-nnoremap <Leader>dd jmzk"ydd
-nnoremap <Leader>p  mxdd"yP'zP'x
