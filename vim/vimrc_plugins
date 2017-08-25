@@ -140,3 +140,29 @@ set errorformat=%f:%l\ %n\ %m
 nnoremap <Leader>D :Dash <cword><cr>
 cabbr D Dash
 
+" Ale related config
+let g:ale_sign_error = '☠'
+let g:ale_sign_warning = '⚡'
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
+"
+" ALE offers an option g:ale_lint_on_save for enabling running the linters when
+" files are saved. This option is enabled by default. If you only wish to run
+" linters when files are saved, you can turn the other options off.
+"
+" let g:ale_lint_on_text_changed = 'never'
+"
+" if you don't want linters to run on opening a file:
+" let g:ale_lint_on_enter = 0
+"
+" If you wish to show Vim windows for the loclist or quickfix items when a file
+" contains warnings or errors, g:ale_open_list can be set to 1.
+" g:ale_keep_list_window_open can be set to 1 if you wish to keep the window
+" open even after errors disappear.
+"
+" let g:ale_open_list = 1
+"
+" This can be useful if you are combining ALE with
+" some other plugin which sets quickfix errors, etc.
+"
+" let g:ale_keep_list_window_open = 1
