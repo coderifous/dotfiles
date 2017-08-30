@@ -12,4 +12,5 @@ bind diff g move-first-line
 bind diff G move-last-line
 
 bind main C !git cherry-pick %(commit)
+bind main <Ctrl-r> !git rebase -i %(commit)
 bind main ! !git revert %(commit)
