@@ -38,11 +38,6 @@ if [ -d /usr/local/mysql/bin ] ; then
   PATH="${PATH}:/usr/local/mysql/bin"
 fi
 
-# PostgreSQL
-if [ -d /opt/local/lib/postgresql83/bin ] ; then
-  PATH="${PATH}:/opt/local/lib/postgresql83/bin"
-fi
-
 PATH=./bin:${PATH}
 PATH=.:${PATH}
 
