@@ -11,7 +11,7 @@ fi
 ############################################################
 
 if [ -d ~/bin ] ; then
-  PATH="~/bin:${PATH}"
+  PATH="${HOME}/bin:${PATH}"
 fi
 
 if [ -d /usr/local/bin ] ; then
