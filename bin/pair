@@ -1,0 +1,19 @@
+#!/bin/sh
+
+echo "Starting ngrok"
+ngrok start --config ~/ngrok.yml gotty-shell web > /dev/null &
+sleep 1
+
+URLS=$(curl -s localhost:4040/api/tunnels | jq -r '.tunnels[] | "\(.name): \(.public_url)"')
+echo $URLS | pbcopy
+echo $URLS
+echo
+
+echo "Starting gotty. ^C to terminate"
+gotty -w tmux -S/tmp/main attach 2> /dev/null
+
+echo "Gotty exited. Terminating ngrok"
+killall ngrok
+
+echo "Bye!"
+echo
