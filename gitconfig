@@ -33,4 +33,6 @@
 	excludesfile = /Users/jgarvin/.gitignore_global
 	editor = vim --noplugins
 [rerere]
-	enabled = true
+	enabled = 1
+[github]
+	user = coderifous
