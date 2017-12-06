@@ -15,5 +15,6 @@ source $HOME/.vim/vimrc_mappings
 source $HOME/.vim/vimrc_autocmds
 
 if &loadplugins
+  set rtp+=/usr/local/opt/fzf
   source $HOME/.vim/vimrc_plugins
 endif

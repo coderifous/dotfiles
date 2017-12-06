@@ -24,24 +24,53 @@ let NERDTreeMouseMode=1
 command Nojs :let NERDTreeIgnore=[".js$"]
 
 " CtrlP plugin
-let g:ctrlp_map = '<Leader>e'
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_custom_ignore = '\vvendor$|node_modules$|tmp$|\.git$|\.hg$|\.svn$'
-let g:ctrlp_prompt_mappings = {
-  \ 'PrtSelectMove("j")':   ['<c-j>', '<c-n>'],
-  \ 'PrtSelectMove("k")':   ['<c-k>', '<c-p>'],
-  \ 'PrtHistory(-1)':       ['<down>'],
-  \ 'PrtHistory(1)':        ['<up>'],
-  \ 'MarkToOpen()':         ['<c-a>'],
-  \ }
-map <Leader>f :CtrlPCurFile<CR>
-map <Leader>r :CtrlPMRUFiles<CR>
-map <Leader>b :CtrlPBuffer<CR>
-map <Leader>g :CtrlPLine<CR>
-map <Leader>t :CtrlPBufTag<CR>
-map <Leader>T :CtrlPBufTagAll<CR>
+" let g:ctrlp_map = '<Leader>e'
+" let g:ctrlp_working_path_mode = 0
+" let g:ctrlp_custom_ignore = '\vvendor$|node_modules$|tmp$|\.git$|\.hg$|\.svn$'
+" let g:ctrlp_prompt_mappings = {
+"   \ 'PrtSelectMove("j")':   ['<c-j>', '<c-n>'],
+"   \ 'PrtSelectMove("k")':   ['<c-k>', '<c-p>'],
+"   \ 'PrtHistory(-1)':       ['<down>'],
+"   \ 'PrtHistory(1)':        ['<up>'],
+"   \ 'MarkToOpen()':         ['<c-a>'],
+"   \ }
+" map <Leader>f :CtrlPCurFile<CR>
+" map <Leader>r :CtrlPMRUFiles<CR>
+" map <Leader>b :CtrlPBuffer<CR>
+" map <Leader>g :CtrlPLine<CR>
+" map <Leader>t :CtrlPBufTag<CR>
+" map <Leader>T :CtrlPBufTagAll<CR>
 " map <Leader>c :CtrlPChange<CR>
 " map <Leader>C :CtrlPChangeAll<CR>
+
+" FZF Plugin
+nmap <Leader>e :GFiles<CR>
+nmap <Leader>E :Files<CR>
+nmap <Leader>f :Files %:h<CR>
+nmap <Leader>b :Buffers<CR>
+nmap <Leader>w :Windows<CR>
+nmap <Leader>g :Lines<CR>
+nmap <Leader>t :BTags<CR>
+nmap <Leader>T :Tags<CR>
+nmap gl :BCommits<CR>
+
+let g:fzf_layout = { 'down': '~20%' }
+
+" Customize fzf colors to match your color scheme
+" let g:fzf_colors =
+" \ { 'fg':      ['fg', 'Normal'],
+"   \ 'bg':      ['bg', 'Normal'],
+"   \ 'hl':      ['fg', 'Search'],
+"   \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+"   \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+"   \ 'hl+':     ['fg', 'Statement'],
+"   \ 'info':    ['fg', 'PreProc'],
+"   \ 'border':  ['fg', 'Ignore'],
+"   \ 'prompt':  ['fg', 'Conditional'],
+"   \ 'pointer': ['fg', 'Exception'],
+"   \ 'marker':  ['fg', 'Keyword'],
+"   \ 'spinner': ['fg', 'Label'],
+"   \ 'header':  ['fg', 'Comment'] }
 
 " skip AlignMaps default mappings
 let g:loaded_AlignMapsPlugin = 1
@@ -53,10 +82,10 @@ nmap gh :Gbrowse<CR>
 vmap gh :Gbrowse<CR>
 
 " Gitv browser mode (shows git log for repo)
-nmap gl :Gitv --all<CR>
+" nmap gl :Gitv --all<CR>
 " Gitv file mode (shows git history for current file)
-nmap gL :Gitv! --all<CR>
-vmap gL :Gitv! --all<CR>
+" nmap gL :Gitv! --all<CR>
+" vmap gL :Gitv! --all<CR>
 
 " Jekyll plugin config
 let g:jekyll_path = "~/Projects/coderifous.github.com"
