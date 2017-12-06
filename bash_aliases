@@ -33,7 +33,7 @@ alias lal="ls -al"
 ############################################################
 
 alias g="git"
-alias gb="git branch -a -v"
+alias gb="git branch"
 alias gc="git commit -v"
 alias gca="git commit -v -a"
 alias gd="git diff --word-diff"
@@ -77,7 +77,7 @@ function gu {
 
 function gco {
   if [ -z "$1" ]; then
-    git checkout master
+    git checkout $(git branch | fzf)
   else
     git checkout $*
   fi
