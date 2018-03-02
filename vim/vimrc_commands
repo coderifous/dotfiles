@@ -1,6 +1,25 @@
 " Commands
 " ------------------------------------------------------------
 
+" When I save, do X
+command! -nargs=1 WhenISaveThisBuffer call s:WhenISaveThisBuffer(<q-args>)
+command! WhenISaveThisBufferDoNothing autocmd! BufWritePost <buffer>
+command! -nargs=1 WhenISaveThisBufferTmuxRunCommand call s:WhenISaveThisBufferTmuxRunCommand(<q-args>)
+command! -nargs=1 WhenISaveThisBufferTmuxClearAndRunCommand call s:WhenISaveThisBufferTmuxClearAndRunCommand(<q-args>)
+
+function! s:WhenISaveThisBuffer(doThis)
+  autocmd! BufWritePost <buffer>
+  execute "autocmd BufWritePost <buffer> " a:doThis
+endfunction
+
+function! s:WhenISaveThisBufferTmuxRunCommand(doThis)
+  execute ":WhenISaveThisBuffer :call TmuxRunCommand('" a:doThis "')"
+endfunction
+
+function! s:WhenISaveThisBufferTmuxClearAndRunCommand(doThis)
+  execute ":WhenISaveThisBuffer :call TmuxClearAndRunCommand('" a:doThis "')"
+endfunction
+
 " easily get to vim config
 command Vimrc          :e ~/.vimrc
 command VimrcCommands  :e ~/.vim/vimrc_commands
@@ -27,4 +46,3 @@ command Gemfile  :e Gemfile
 command Routes   :e config/routes.rb
 command Schema   :e db/schema.rb
 command Database :e config/database.yml
-
