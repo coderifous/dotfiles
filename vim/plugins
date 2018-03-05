@@ -62,6 +62,7 @@ plugins=(
   https://github.com/slim-template/vim-slim.git
   https://github.com/elixir-lang/vim-elixir.git
   https://github.com/jnwhiteh/vim-golang.git
+  https://github.com/christoomey/vim-tmux-navigator.git
 )
 
 bundle_dir=$HOME/.vim/bundle
