@@ -46,12 +46,12 @@ command Nojs :let NERDTreeIgnore=[".js$"]
 " FZF Plugin
 nmap <Leader>e :GFiles<CR>
 nmap <Leader>E :Files<CR>
-nmap <Leader>f :Files %:h<CR>
-nmap <Leader>b :Buffers<CR>
-nmap <Leader>w :Windows<CR>
-nmap <Leader>g :Lines<CR>
-nmap <Leader>t :BTags<CR>
-nmap <Leader>T :Tags<CR>
+nmap <Leader>ff :Files %:h<CR>
+nmap <Leader>fb :Buffers<CR>
+nmap <Leader>fw :Windows<CR>
+nmap <Leader>fg :Lines<CR>
+nmap <Leader>ft :BTags<CR>
+nmap <Leader>fT :Tags<CR>
 nmap gl :BCommits<CR>
 
 let g:fzf_layout = { 'down': '~20%' }
