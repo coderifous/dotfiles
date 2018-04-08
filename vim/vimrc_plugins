@@ -76,6 +76,8 @@ let g:fzf_layout = { 'down': '~20%' }
 let g:loaded_AlignMapsPlugin = 1
 
 " Git interaction
+nmap <Leader>ts :!tig status<CR><CR>
+nmap <Leader>tl :!tig -- %<CR><CR>
 nmap gb :Gblame<CR>
 nmap gh :Gbrowse<CR>
 vmap gh :Gbrowse<CR>
