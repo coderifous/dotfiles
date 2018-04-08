@@ -4,8 +4,9 @@ set blame-options = -C
 set tab-size = 2
 set line-graphics = utf-8
 set show-notes = true
-set diff-context = 8
+set diff-context = 3
 set vertical-split = true
+set show-changes = false
 set refresh-mode = auto
 
 bind diff g move-first-line
