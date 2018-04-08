@@ -36,3 +36,5 @@
 	enabled = 1
 [github]
 	user = coderifous
+[commit]
+	verbose = true
