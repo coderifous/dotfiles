@@ -155,6 +155,10 @@ if [ -f ~/bin/git_completion ]; then
   . ~/bin/git_completion
 fi
 
+if [ -f ~/dotfiles/tmuxinator.bash ]; then
+  . ~/dotfiles/tmuxinator.bash
+fi
+
 function _ssh_completion() {
   perl -ne 'print "$1 " if /^Host (.+)$/' ~/.ssh/config
 }
