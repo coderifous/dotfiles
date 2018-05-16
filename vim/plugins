@@ -22,7 +22,6 @@ plugins=(
   https://github.com/xolox/vim-misc.git
   https://github.com/xolox/vim-session.git
   https://github.com/rizzatti/dash.vim.git
-  https://github.com/w0rp/ale.git
 
   https://github.com/tsaleh/vim-align.git
 
