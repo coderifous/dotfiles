@@ -1,0 +1,20 @@
+function show_changes {
+  clear
+  echo Staged Changes:
+  echo
+  git diff --cached --stat
+  echo Unstaged Changes:
+  echo
+  git diff --stat
+  echo
+  echo Untracked files:
+  echo
+  git ls-files --others --exclude-standard | sed 's/^/ /'
+}
+
+show_changes
+
+fswatch -0 -e ".git/" -e "coverage/" -e "tmp/" -e "vendor/" -e "node_modules/" -e "public/" -e "tags*" -e "4913" . | while read -d "" event
+do
+  show_changes
+done

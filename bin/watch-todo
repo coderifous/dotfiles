@@ -1,0 +1,13 @@
+function show_todos {
+  clear
+  echo TODO list:
+  echo
+  git diff -U0 | grep TODO | sed 's/^.*TODO:*/*/'
+}
+
+show_todos
+
+fswatch -0 -e ".git/" -e "coverage/" -e "tmp/" -e "vendor/" -e "node_modules/" -e "public/" -e "tags*" -e "4913" . | while read -d "" event
+do
+  show_todos
+done

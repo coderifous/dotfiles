@@ -1,0 +1,68 @@
+
+function autospec() {
+
+  changed_file=`realpath --relative-to=. $1`
+
+  if [ ! -e $changed_file ]
+  then
+    echo Ignoring removed file $changed_file
+    return 0
+  fi
+
+
+  function file_with_focus {
+
+    function colon_join {
+      local IFS=":"; echo "$*"
+    }
+
+    changed_lines=$(git blame -p $1 | grep '^00000000' | awk '{ print $2 }')
+
+    if [[ ${changed_lines[@]} ]]
+    then
+      echo $1:$(colon_join $changed_lines)
+    else
+      echo $1
+    fi
+  }
+
+  # Runs specified spec file
+  function runspec() {
+    echo Running $1
+    RAILS_ENV=test bundle exec spring rspec --deprecation-out /dev/null $1
+  }
+
+  # Returns spec for given file
+  # Given    app/models/foo.rb
+  # Returns  spec/models/foo_spec.rb
+  function specfor() {
+    name=$(echo $1 | sed 's/^app\///' | sed 's/.rb$/_spec.rb/')
+    echo spec/$name
+  }
+
+  # clear
+  # tmux clear-history
+
+  if [[ $changed_file == spec/*_spec.rb ]]
+  then
+    runspec $(file_with_focus $changed_file)
+  elif [[ $changed_file == spec/spec_helper.rb ]]
+  then
+    echo Ignoring change to $changed_file
+  else
+    echo Changed $changed_file
+    specfile=$(specfor $changed_file)
+    if [ -e "$specfile" ]
+    then
+      runspec $(file_with_focus $specfile)
+    else
+      echo No spec matched for $specfile
+    fi
+  fi
+
+}
+
+export -f autospec
+
+echo Watching specs...
+fswatch -0 -e ".*" -i "^[^#]*\.rb$" . | xargs -0 -n 1 -I % bash -c 'autospec %'
