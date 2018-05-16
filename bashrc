@@ -1,5 +1,3 @@
-## This file is sourced by all *interactive* bash shells on startup.  This
-## file *should generate no output* or it will break the scp and rcp commands.
 ############################################################
 
 if [ -e /etc/bashrc ] ; then
@@ -20,6 +18,10 @@ fi
 
 if [ -d /usr/local/sbin ] ; then
   PATH="${PATH}:/usr/local/sbin"
+fi
+
+if [ -d $HOME/Library/Python/3.6/bin ] ; then
+  PATH="${PATH}:$HOME/Library/Python/3.6/bin"
 fi
 
 # rbenv
