@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+# Does the rigamarole of creating a PR for the given branch.
+# Assumes PRs want to be based on latest master branch.
+
+# Step 1) If current branch is master, ask for a new branch name.
+# Step 1.2) Create new branch if necessary.
+# Step 2) Confirm commits are correct.
+# Step 3) Rebase on latest origin/master.
+# Step 4) Push new branch to origin.
+# Step 5) Call 'hub pull-request -o'
+# Finally) Return to original branch, e.g. checkout master.
+
+orig_branch=$(git rev-parse --abbrev-ref HEAD)
+
+branch_name=$(git rev-parse --abbrev-ref HEAD)
+
+if [ $branch_name == "master" ]; then
+  read -p "Name the PR branch: " branch_name
+  git checkout -b $branch_name
+fi
+
+echo These commits will be in the PR:
+echo
+git log --oneline origin/master..$branch_name
+echo
+read -n 1 -p "Continue? (y/N): " confirmation
+echo
+
+if ! [[ $confirmation =~ ^[Yy]$ ]]; then
+  echo "Ok, stopping."
+  exit
+fi
+
+echo Rebasing on latest master...
+git fetch
+git rebase origin/master
+
+echo Pushing $branch_name to origin
+git push --set-upstream origin $branch_name
+
+echo Creating PR using branch: $branch_name
+hub pull-request -o
+
+if [[ $orig_branch != $branch_name ]]; then
+  echo Returning to $orig_branch branch.
+  git co $orig_branch
+fi
