@@ -22,9 +22,7 @@ func! s:Connect(socketfile)
   let g:WSjob = job_start("socat - UNIX-CONNECT:" . a:socketfile, { "err_cb": function("s:ErrorHandler"), "out_cb": function("s:BasicInputHandler") })
   let g:WSchannel = job_getchannel(g:WSjob)
 
-  if ch_status(g:WSchannel) == "open"
-    echomsg "WS connected."
-  else
+  if ch_status(g:WSchannel) != "open"
     echomsg "Unable to connect to .working_set_socket"
   endif
 endfunc
@@ -127,10 +125,12 @@ command! WSSelectNextItem call s:SelectNextItem()
 command! WSSelectPrevItem call s:SelectPrevItem()
 command! WSSearchCurrentWord call s:SearchCurrentWord()
 
-nnoremap <silent> <C-n>     :WSSelectNextItem<CR>
-nnoremap <silent> <C-p>     :WSSelectPrevItem<CR>
-nnoremap <silent> <Leader>* *N:WSSearchCurrentWord<CR>
-nnoremap <silent> <Leader>p :WSGrab p<CR>
-nnoremap <silent> <Leader>P :WSGrab P<CR>
+if !exists('g:WorkingSetSkipMappings')
+  nnoremap <silent> <C-n>     :WSSelectNextItem<CR>
+  nnoremap <silent> <C-p>     :WSSelectPrevItem<CR>
+  nnoremap <silent> <Leader>* *N:WSSearchCurrentWord<CR>
+  nnoremap <silent> <Leader>p :WSGrab p<CR>
+  nnoremap <silent> <Leader>P :WSGrab P<CR>
+endif
 
 endif

@@ -143,9 +143,11 @@ command! WSSelectPrevItem call s:WS_select_prev_item()
 command! WSSearchCurrentWord call s:WS_search_current_word()
 command! WSWaitForSync call s:WS_wait_for_sync()
 
-nnoremap <silent> <C-n> :WSSelectNextItem<CR>
-nnoremap <silent> <C-p> :WSSelectPrevItem<CR>
-nnoremap <silent> <Leader>* *N:WSSearchCurrentWord<CR>
-nnoremap <silent> <Leader><Leader> :WSWaitForSync<CR>
+if !exists('g:WorkingSetSkipMappings')
+  nnoremap <silent> <C-n> :WSSelectNextItem<CR>
+  nnoremap <silent> <C-p> :WSSelectPrevItem<CR>
+  nnoremap <silent> <Leader>* *N:WSSearchCurrentWord<CR>
+  nnoremap <silent> <Leader><Leader> :WSWaitForSync<CR>
+endif
 
 endif
