@@ -165,6 +165,8 @@ if [ -f ~/dotfiles/tmuxinator.bash ]; then
   . ~/dotfiles/tmuxinator.bash
 fi
 
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
 function _ssh_completion() {
   perl -ne 'print "$1 " if /^Host (.+)$/' ~/.ssh/config
 }
