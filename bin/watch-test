@@ -1,0 +1,68 @@
+
+function autotest() {
+
+  changed_file=`realpath --relative-to=. $1`
+
+  if [ ! -e $changed_file ]
+  then
+    echo Ignoring removed file $changed_file
+    return 0
+  fi
+
+
+  function file_with_focus {
+
+    function colon_join {
+      local IFS=":"; echo "$*"
+    }
+
+    changed_lines=$(git blame -p $1 | grep '^00000000' | awk '{ print $2 }')
+
+    if [[ ${changed_lines[@]} ]]
+    then
+      echo $1:$(colon_join $changed_lines)
+    else
+      echo $1
+    fi
+  }
+
+  # Runs specified test file
+  function runtest() {
+    echo Running $1
+    rails test $1
+  }
+
+  # Returns test for given file
+  # Given    app/models/foo.rb
+  # Returns  test/models/foo_test.rb
+  function testfor() {
+    name=$(echo $1 | sed 's/^app\///' | sed 's/.rb$/_test.rb/')
+    echo test/$name
+  }
+
+  # clear
+  # tmux clear-history
+
+  if [[ $changed_file == test/*_test.rb ]]
+  then
+    runtest $(file_with_focus $changed_file)
+  elif [[ $changed_file == test/test_helper.rb ]]
+  then
+    echo Ignoring change to $changed_file
+  else
+    echo Changed $changed_file
+    testfile=$(testfor $changed_file)
+    if [ -e "$testfile" ]
+    then
+      runtest $(file_with_focus $testfile)
+    else
+      echo No test matched for $testfile
+    fi
+  fi
+
+}
+
+export -f autotest
+
+echo Watching tests...
+fswatch -0 -e ".*" -i "^[^#]*\.rb$" . | xargs -0 -n 1 -I % bash -c 'autotest %'
