@@ -8,6 +8,7 @@ set diff-context = 3
 set vertical-split = true
 set show-changes = false
 set refresh-mode = auto
+set status-show-untracked-files = true
 
 bind diff g move-first-line
 bind diff G move-last-line
