@@ -20,6 +20,10 @@ if [ -d /usr/local/sbin ] ; then
   PATH="${PATH}:/usr/local/sbin"
 fi
 
+if [ -d $HOME/dotfiles/bin ] ; then
+  PATH="${PATH}:$HOME/dotfiles/bin"
+fi
+
 if [ -d $HOME/Library/Python/3.6/bin ] ; then
   PATH="${PATH}:$HOME/Library/Python/3.6/bin"
 fi
