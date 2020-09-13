@@ -60,7 +60,8 @@ plugins=(
   https://github.com/elixir-lang/vim-elixir.git
   https://github.com/jnwhiteh/vim-golang.git
   https://github.com/christoomey/vim-tmux-navigator.git
-  https://github.com/Valloric/YouCompleteMe.git
+
+  https://github.com/neoclide/coc.nvim.git
 )
 
 bundle_dir=$HOME/.vim/bundle
