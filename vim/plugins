@@ -40,7 +40,7 @@ plugins=(
   https://github.com/vim-airline/vim-airline.git
   https://github.com/vim-airline/vim-airline-themes.git
 
-  https://github.com/vim-scripts/AutoTag.git
+  https://github.com/ludovicchabant/vim-gutentags.git
   https://github.com/vim-scripts/tComment.git
   https://github.com/vim-scripts/ReplaceWithRegister.git
   https://github.com/vim-scripts/ZoomWin.git
