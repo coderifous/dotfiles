@@ -145,7 +145,12 @@ let g:utl_cfg_hdl_scm_http_system = "silent !open -a Choosy '%u'"
 " Powerline
 " Need the monaco font w/ powerline enhancements?
 "   http://gist.github.com/1634235
-let g:Powerline_symbols = 'fancy'
+" let g:Powerline_symbols = 'fancy'
+
+" Airline
+let g:airline_powerline_fonts = 1
+let g:airline_extensions = []
+let g:airline_theme = 'jellybeans'
 
 " signature plugin
 " Not config for the plugin, just coloring for it.

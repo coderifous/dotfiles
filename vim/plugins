@@ -37,7 +37,8 @@ plugins=(
   https://github.com/tpope/vim-bundler.git
   https://github.com/tpope/vim-rbenv.git
 
-  https://github.com/Lokaltog/vim-powerline.git
+  https://github.com/vim-airline/vim-airline.git
+  https://github.com/vim-airline/vim-airline-themes.git
 
   https://github.com/vim-scripts/AutoTag.git
   https://github.com/vim-scripts/tComment.git
