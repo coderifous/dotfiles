@@ -117,7 +117,7 @@ alias whotunes='lsof -r 2 -n -P -F n -c iTunes -a -i TCP@`hostname`:3689'
 alias b="bundle"
 alias bu="b update"
 alias be="b exec"
-alias bi="b install --path vendor"
+alias bi="b install"
 alias bil='bi --local'
 alias binit="bi && b package && echo 'vendor/ruby' >> .gitignore"
 alias bo="EDITOR=vim b open"
@@ -209,7 +209,7 @@ alias tmux='TERM=screen-256color tmux'
 alias target='echo $TMUX | cut -f1 -d, > .tmux-target; tmux display-message -p "#{window_id}.#{pane_id}" >> .tmux-target'
 alias t='target'
 
-alias ws="rbenv shell 2.3.1 && working_set"
+alias ws="rbenv shell 2.7.1 && working_set"
 
 ############################################################
 alias vi=vim
