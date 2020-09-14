@@ -24,8 +24,8 @@ if [ -d $HOME/dotfiles/bin ] ; then
   PATH="${PATH}:$HOME/dotfiles/bin"
 fi
 
-if [ -d $HOME/Library/Python/3.6/bin ] ; then
-  PATH="${PATH}:$HOME/Library/Python/3.6/bin"
+if [ -d $HOME/Library/Python/3.7/bin ] ; then
+  PATH="${PATH}:$HOME/Library/Python/3.7/bin"
 fi
 
 # rbenv
