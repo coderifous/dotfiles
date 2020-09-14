@@ -61,6 +61,9 @@ plugins=(
   https://github.com/jnwhiteh/vim-golang.git
   https://github.com/christoomey/vim-tmux-navigator.git
 
+  https://github.com/posva/vim-vue.git
+  https://github.com/digitaltoad/vim-pug.git
+
   https://github.com/neoclide/coc.nvim.git
 
   https://github.com/nanotech/jellybeans.vim.git
