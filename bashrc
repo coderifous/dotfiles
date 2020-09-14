@@ -146,7 +146,11 @@ elif  [ -f /etc/bash_completion ]; then
   . /etc/bash_completion
 elif  [ -f /etc/profile.d/bash_completion ]; then
   . /etc/profile.d/bash_completion
+elif  [ -f /usr/local/etc/bash_completion.d ]; then
+  . /etc/profile.d/bash_completion
 fi
+
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
 # http://onrails.org/articles/2006/11/17/rake-command-completion-using-rake
 if [ -f ~/bin/rake_completion ]; then
