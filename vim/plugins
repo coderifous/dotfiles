@@ -36,6 +36,7 @@ plugins=(
   https://github.com/tpope/vim-eunuch.git
   https://github.com/tpope/vim-bundler.git
   https://github.com/tpope/vim-rbenv.git
+  https://github.com/tpope/vim-liquid.git
 
   https://github.com/vim-airline/vim-airline.git
   https://github.com/vim-airline/vim-airline-themes.git
