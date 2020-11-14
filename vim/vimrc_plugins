@@ -150,7 +150,26 @@ let g:utl_cfg_hdl_scm_http_system = "silent !open -a Choosy '%u'"
 " Airline
 let g:airline_powerline_fonts = 1
 let g:airline_extensions = []
-let g:airline_theme = 'jellybeans'
+
+" Colorscheme (with airline related config)
+
+set termguicolors
+" set Vim-specific sequences for RGB colors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+if strftime('%H') >= 7 && strftime('%H') < 18
+  set background=light
+  let g:airline_theme = 'stellarized_light'
+  colorscheme stellarized
+else
+  set background=dark
+  " let g:airline_theme = 'jellybeans'
+  " colorscheme jellybeans
+  let g:airline_theme = 'stellarized_dark'
+  colorscheme stellarized
+endif
+
 
 " signature plugin
 " Not config for the plugin, just coloring for it.
