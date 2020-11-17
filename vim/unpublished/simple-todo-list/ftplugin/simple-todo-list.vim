@@ -70,9 +70,20 @@ function! ToggleTodoDoneAndLogged()
   call ToggleTodoLogged()
 endfunction
 
+function! ToggleSectionTitle()
+  let regionName = synIDattr(synID(line("."), col("."), 0), "name")
+  if regionName == "simpleTodoTitle"
+    normal! jddk
+  else
+    normal! yypVr-k
+  endif
+endfunction
+
 nnoremap <buffer> <silent> <Leader>m :call ToggleTodoDone()<CR>
 nnoremap <buffer> <silent> <Leader>l :call ToggleTodoLogged()<CR>
 nnoremap <buffer> <silent> <Leader>d :call ToggleTodoDoneAndLogged()<CR>
+
+nnoremap <buffer> <silent> <Leader>T :call ToggleSectionTitle()<CR>
 
 nnoremap <buffer> <C-n> /^----<CR><CR>
 nnoremap <buffer> <C-p> ?^----<CR>n<CR>
