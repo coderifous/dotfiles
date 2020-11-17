@@ -158,15 +158,15 @@ set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
-if strftime('%H') >= 7 && strftime('%H') < 18
-  set background=light
-  let g:airline_theme = 'stellarized_light'
-  colorscheme stellarized
-else
+if system("defaults read -g AppleInterfaceStyle") =~ '^Dark'
   set background=dark
   " let g:airline_theme = 'jellybeans'
   " colorscheme jellybeans
   let g:airline_theme = 'stellarized_dark'
+  colorscheme stellarized
+else
+  set background=light
+  let g:airline_theme = 'stellarized_light'
   colorscheme stellarized
 endif
 
