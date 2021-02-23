@@ -1,38 +1,19 @@
 command Todo :e ~/.todo
 
-function STL_ToggleTodoLogged()
-  let done_icon    = "✔"
-  let notdone_icon = "❒"
-  let save_cursor  = getpos(".")
+let s:done_icon     = "✔"
+let s:notdone_icon  = "❒"
+let s:canceled_icon = "✘"
+let s:pushed_icon   = "⍄"
 
-  " FML this didn't work for multibyte char
-  " let first_char = getline('.')[col('.')-1]
-  normal! ^
-  normal! "lyl
-  let first_char = @l
-
-  if first_char == done_icon
-    " Move to log
-    normal! dd
-    call search("DONE LOG")
-    normal! jp
-
-  elseif first_char == notdone_icon
-    " Move to todo list
-    normal! dd
-    call search("TODO LIST", "b")
-    normal! jp
-
-  else
-    " do nothing
-  end
-
-  call setpos('.', save_cursor)
+function s:now_timestamp()
+  let timestamp = strftime("%b %e, %l:%M%p")
+  let timestamp = substitute(timestamp, "  ", " ", "g")
+  let timestamp = substitute(timestamp, "AM", "am", "")
+  let timestamp = substitute(timestamp, "PM", "pm", "")
+  return timestamp
 endfunction
 
-function STL_ToggleTodoDone()
-  let done_icon    = "✔"
-  let notdone_icon = "❒"
+function STL_ToggleTodoDone(include_timestamp)
   let save_cursor  = getpos(".")
 
   " FML this didn't work for multibyte char
@@ -41,27 +22,68 @@ function STL_ToggleTodoDone()
   normal! "lyl
   let first_char = @l
 
-  if first_char == done_icon
+  if first_char == s:done_icon
     " Mark as not done
-    s/ \[.*\]//
-    execute "normal! xi".notdone_icon
+    s/ \[.*\]//e
+    execute "normal! xi".s:notdone_icon
 
-  elseif first_char == notdone_icon
+  elseif first_char == s:notdone_icon
     " Mark as done
-    let date_command = "date ".shellescape("+%h %d, %Y %l:%M%p")
-    let timestamp = substitute(system(date_command), "\n", "", "")
-    execute "normal! xi".done_icon." [".timestamp."]"
+    if a:include_timestamp
+      execute "normal! xi".s:done_icon." [".s:now_timestamp()."]"
+    else
+      execute "normal! xi".s:done_icon
+    endif
+
+  elseif first_char == s:canceled_icon
+    execute "normal! xi".s:notdone_icon
+
+  elseif first_char == s:pushed_icon
+    execute "normal! xi".s:notdone_icon
 
   else
-    execute "normal! i".notdone_icon." "
+    execute "normal! i".s:notdone_icon." "
   end
 
   call setpos('.', save_cursor)
 endfunction
 
-function STL_ToggleTodoDoneAndLogged()
-  call STL_ToggleTodoDone()
-  call STL_ToggleTodoLogged()
+function STL_ToggleTodoCanceled()
+  let save_cursor  = getpos(".")
+
+  " FML this didn't work for multibyte char
+  " let first_char = getline('.')[col('.')-1]
+  normal! ^
+  normal! "lyl
+  let first_char = @l
+
+  if first_char != s:canceled_icon
+    " Mark canceled
+    execute "normal! xi".s:canceled_icon
+  else
+    execute "normal! xi".s:notdone_icon
+  end
+
+  call setpos('.', save_cursor)
+endfunction
+
+function STL_ToggleTodoPushed()
+  let save_cursor  = getpos(".")
+
+  " FML this didn't work for multibyte char
+  " let first_char = getline('.')[col('.')-1]
+  normal! ^
+  normal! "lyl
+  let first_char = @l
+
+  if first_char != s:pushed_icon
+    " Mark canceled
+    execute "normal! xi".s:pushed_icon
+  else
+    execute "normal! xi".s:notdone_icon
+  end
+
+  call setpos('.', save_cursor)
 endfunction
 
 function STL_ToggleSectionTitle()

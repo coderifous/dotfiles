@@ -12,11 +12,11 @@ command! -buffer -complete=custom,STL_ListPagesComp -nargs=1 OpenPage call STL_O
 
 command! -buffer FindPage call fzf#run(fzf#wrap({ 'sink': function('STL_OpenPageByName'), 'source':'note page list' }))
 
-nnoremap <buffer> <silent> <Leader>m :call STL_ToggleTodoDone()<CR>
-nnoremap <buffer> <silent> <Leader>l :call STL_ToggleTodoLogged()<CR>
-nnoremap <buffer> <silent> <Leader>d :call STL_ToggleTodoDoneAndLogged()<CR>
-
+nnoremap <buffer> <silent> <Leader>d :call STL_ToggleTodoDone(0)<CR>
+nnoremap <buffer> <silent> <Leader>m :call STL_ToggleTodoDone(1)<CR>
 nnoremap <buffer> <silent> <Leader>T :call STL_ToggleSectionTitle()<CR>
+nnoremap <buffer> <silent> <Leader>x :call STL_ToggleTodoCanceled()<CR>
+nnoremap <buffer> <silent> <Leader>> :call STL_ToggleTodoPushed()<CR>
 
 nnoremap <buffer> <C-n> /^----<CR><CR>
 nnoremap <buffer> <C-p> ?^----<CR>n<CR>
