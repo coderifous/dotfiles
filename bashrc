@@ -34,15 +34,15 @@ if [ `which rbenv 2> /dev/null` ]; then
 fi
 
 # Node Package Manager
-if [ -d /usr/local/share/npm/bin ] ; then
-  NODE_PATH="/usr/local/lib/node"
-  PATH="${PATH}:/usr/local/share/npm/bin"
-fi
+# if [ -d /usr/local/share/npm/bin ] ; then
+#   NODE_PATH="/usr/local/lib/node"
+#   PATH="${PATH}:/usr/local/share/npm/bin"
+# fi
 
 # MySql
-if [ -d /usr/local/mysql/bin ] ; then
-  PATH="${PATH}:/usr/local/mysql/bin"
-fi
+# if [ -d /usr/local/mysql/bin ] ; then
+#   PATH="${PATH}:/usr/local/mysql/bin"
+# fi
 
 PATH=./bin:${PATH}
 PATH=.:${PATH}
@@ -107,7 +107,8 @@ fi
 # Do not set PS1 for dumb terminals
 if [ "$TERM" != 'dumb' ] && [ -n "$BASH" ]; then
   # export PS1='\[\033[32m\]\n[\s: \w] $(rvm_prompt) $(git_prompt)\n\[\033[31m\][\u@\h]\$ \[\033[00m\]'
-  export PS1='\[\033[32m\]\n[\s: \w] $(git_prompt)\n\[\033[31m\][\u@\h]\$ \[\033[00m\]'
+  # export PS1='\[\033[32m\]\n[\s: \w] $(git_prompt)\n\[\033[31m\][\u@\h]\$ \[\033[00m\]'
+  export PS1='\[\033[32m\]\n[\s: \w]\n\[\033[31m\][\u@\h]\$ \[\033[00m\]'
 fi
 
 ############################################################
@@ -283,3 +284,7 @@ function gkill () {
   formatted_pname="[${pname:0:1}]${pname:1}"
   kill -9 $(ps aux | grep $formatted_pname | awk '{print $2}')
 }
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
