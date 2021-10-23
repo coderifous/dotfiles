@@ -44,8 +44,8 @@ command Nojs :let NERDTreeIgnore=[".js$"]
 " map <Leader>C :CtrlPChangeAll<CR>
 
 " FZF Plugin
-nmap <Leader>e :GFiles<CR>
-nmap <Leader>E :Files<CR>
+nmap <Leader>e :Files<CR>
+nmap <Leader>E :GFiles<CR>
 nmap <Leader>ff :Files %:h<CR>
 nmap <Leader>fb :Buffers<CR>
 nmap <Leader>fw :Windows<CR>
@@ -78,7 +78,7 @@ let g:loaded_AlignMapsPlugin = 1
 " Git interaction
 nmap <Leader>ts :!tig status<CR><CR>
 nmap <Leader>tl :!tig -- %<CR><CR>
-nmap gb :Gblame<CR>
+nmap gb :Git blame<CR>
 nmap gh :Gbrowse<CR>
 vmap gh :Gbrowse<CR>
 
