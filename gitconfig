@@ -31,7 +31,7 @@
   default = tracking
 [core]
 	excludesfile = /Users/jgarvin/.gitignore_global
-	editor = vim --noplugins
+	editor = nvim --noplugins
 [rerere]
 	enabled = 1
 [github]
