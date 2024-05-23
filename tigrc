@@ -9,6 +9,7 @@ set vertical-split = true
 set show-changes = false
 set refresh-mode = auto
 set status-show-untracked-files = true
+set main-view-date-local = yes
 
 bind diff g move-first-line
 bind diff G move-last-line
