@@ -226,3 +226,15 @@ imap <silent><script><expr> <C-]> copilot#Next()
 " imap <silent><script><expr> <C-[> copilot#Previous()
 
 let g:copilot_node_command = "~/.nvm/versions/node/v21.6.2/bin/node"
+
+" Add view_component projections for rails.vim plugin
+let g:rails_projections = {
+    \ "app/components/*/component.rb": {
+    \   "alternate": "app/components/{}/component.html.slim",
+    \   "type": "component"
+    \ },
+    \ "app/components/*/component.html.slim": {
+    \   "alternate": "app/components/{}/component.rb",
+    \   "type": "component"
+    \ }
+\ }
