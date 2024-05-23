@@ -28,6 +28,13 @@ if [ -d $HOME/Library/Python/3.7/bin ] ; then
   PATH="${PATH}:$HOME/Library/Python/3.7/bin"
 fi
 
+export HOMEBREW_PREFIX="/opt/homebrew";
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+export HOMEBREW_REPOSITORY="/opt/homebrew";
+export HOMEBREW_SHELLENV_PREFIX="/opt/homebrew";
+export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+
 # rbenv
 if [ `which rbenv 2> /dev/null` ]; then
   eval "$(rbenv init -)"
@@ -37,11 +44,6 @@ fi
 # if [ -d /usr/local/share/npm/bin ] ; then
 #   NODE_PATH="/usr/local/lib/node"
 #   PATH="${PATH}:/usr/local/share/npm/bin"
-# fi
-
-# MySql
-# if [ -d /usr/local/mysql/bin ] ; then
-#   PATH="${PATH}:/usr/local/mysql/bin"
 # fi
 
 PATH=./bin:${PATH}
@@ -120,7 +122,7 @@ shopt -s extglob
 shopt -s checkwinsize
 
 export PAGER="less"
-export EDITOR="vim"
+export EDITOR="nvim"
 
 ############################################################
 ## History
@@ -185,7 +187,7 @@ complete -W "$(_ssh_completion)" ssh
 ## Other
 ############################################################
 
-source /usr/local/etc/bash_completion.d/cdargs-bash.sh
+source $HOMEBREW_PREFIX/etc/bash_completion.d/cdargs-bash.sh
 
 if [[ "$USER" == '' ]]; then
   # mainly for cygwin terminals. set USER env var if not already set
@@ -288,3 +290,10 @@ function gkill () {
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+## folder /opt/homebrew contains Homebrew for arm64    #m1_homebrew-arm64
+[[ $(arch) == "arm64" ]] && export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"   #m1_homebrew-arm64
+[[ $(arch) == "x86_64" ]] && export PATH="/usr/local/Homebrew/bin:/usr/local/Homebrew/sbin:$PATH"
+
+alias ibrew='arch --x86_64 /usr/local/Homebrew/bin/brew'
+
