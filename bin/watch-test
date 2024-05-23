@@ -20,7 +20,7 @@ function autotest() {
 
     if [[ ${changed_lines[@]} ]]
     then
-      echo $1:$(colon_join $changed_lines)
+      echo $1 #:$(colon_join $changed_lines)
     else
       echo $1
     fi
@@ -65,4 +65,4 @@ function autotest() {
 export -f autotest
 
 echo Watching tests...
-fswatch -0 -e ".*" -i "^[^#]*\.rb$" . | xargs -0 -n 1 -I % bash -c 'autotest %'
+fswatch --event Updated -0 -e ".*" -i "^[^#]*\.rb$" . | xargs -0 -n 1 -I % bash -c 'autotest %'
