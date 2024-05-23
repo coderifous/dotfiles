@@ -42,10 +42,9 @@ alias gl="git pull"
 alias glr="git pull --rebase"
 alias glrb="git fetch && git rebase origin/master"
 alias gp="git push"
-alias gs="git status"
+alias gs="git status; echo; echo Skipped:; echo; git skipped"
 alias gg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias ggs="gg --stat"
-alias gh="github"
 alias gsl="git shortlog -sn"
 alias gw="git whatchanged"
 alias gst="git stash"
@@ -60,6 +59,8 @@ alias gmo="git merge origin/master"
 alias gup='gst && glr && gstp'
 alias gupb='gst && glrb && gstp'
 alias amend="g commit --amend"
+
+alias gcs="gh copilot suggest"
 
 # Useful report of what has been committed locally but not yet pushed to another
 # branch.  Defaults to the remote origin/master.  The u is supposed to stand for
@@ -209,7 +210,7 @@ alias tmux='TERM=screen-256color tmux'
 alias target='echo $TMUX | cut -f1 -d, > .tmux-target; tmux display-message -p "#{window_id}.#{pane_id}" >> .tmux-target'
 alias t='target'
 
-alias ws="rbenv shell 2.7.1 && working_set"
+alias ws="rbenv shell 2.7.5 && working_set"
 
 ############################################################
 alias vi=nvim
