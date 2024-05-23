@@ -6,6 +6,9 @@
   st = status
   br = branch
   w = whatchanged
+  skip = update-index --skip-worktree
+  unskip = update-index --no-skip-worktree
+  skipped = !git ls-files -v | grep \"^S\"
 [apply]
   whitespace = nowarn
 [color]
@@ -38,3 +41,8 @@
 	user = coderifous
 [commit]
 	verbose = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
