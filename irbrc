@@ -20,3 +20,8 @@ rescue LoadError => e
   puts e
 end
 
+# Load .irbrc in project level root if it exists
+if File.exists?('.irbrc')
+  load '.irbrc'
+end
+
