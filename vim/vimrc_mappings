@@ -1,6 +1,9 @@
 " Key Mappings
 " ------------------------------------------------------------
 
+imap <C-c> <Esc>
+imap <C-g> <Esc>:Copilot<cr>
+
 " Eval line of (V)im script
 nnoremap <Leader>V 0v$hy:<C-r>"<cr>
 

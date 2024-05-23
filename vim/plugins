@@ -55,6 +55,7 @@ plugins=(
   https://github.com/coderifous/textobj-word-column.vim.git
   https://github.com/coderifous/working-set.vim.git
   https://github.com/majutsushi/tagbar.git
+  https://github.com/junegunn/fzf.git
   https://github.com/junegunn/fzf.vim.git
   https://github.com/slim-template/vim-slim.git
   https://github.com/elixir-lang/vim-elixir.git
@@ -68,6 +69,9 @@ plugins=(
 
   https://github.com/nanotech/jellybeans.vim.git
   https://github.com/nightsense/stellarized.git
+
+  https://github.com/github/copilot.vim
+  https://github.com/gcmt/taboo.vim
 )
 
 bundle_dir=$HOME/.vim/bundle
