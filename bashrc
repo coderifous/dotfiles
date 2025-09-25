@@ -40,6 +40,9 @@ if [ `which rbenv 2> /dev/null` ]; then
   eval "$(rbenv init -)"
 fi
 
+# direnv
+eval "$(direnv hook bash)"
+
 # Node Package Manager
 # if [ -d /usr/local/share/npm/bin ] ; then
 #   NODE_PATH="/usr/local/lib/node"
