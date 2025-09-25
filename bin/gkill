@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -eq 0 ]]; then
+  echo "usage: gkill <pattern>" >&2
+  exit 1
+fi
+
+pattern=$1
+
+if command -v pgrep >/dev/null 2>&1; then
+  mapfile -t pids < <(pgrep -f "$pattern")
+else
+  formatted="[${pattern:0:1}]${pattern:1}"
+  mapfile -t pids < <(ps aux | grep -E "$formatted" | awk '{print $2}')
+fi
+
+if [[ ${#pids[@]} -eq 0 ]]; then
+  echo "gkill: no processes found for pattern '$pattern'" >&2
+  exit 1
+fi
+
+printf 'killing: %s\n' "${pids[*]}"
+kill -9 "${pids[@]}"
