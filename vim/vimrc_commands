@@ -46,3 +46,5 @@ command Gemfile  :e Gemfile
 command Routes   :e config/routes.rb
 command Schema   :e db/schema.rb
 command Database :e config/database.yml
+
+command CopyPaths :let @+ = join(map(tabpagebuflist(), 'fnamemodify(bufname(v:val), ":p")'), "\n")
