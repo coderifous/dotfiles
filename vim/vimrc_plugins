@@ -158,16 +158,17 @@ set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
-if system("defaults read -g AppleInterfaceStyle") =~ '^Dark'
-  set background=dark
-  " let g:airline_theme = 'jellybeans'
-  " colorscheme jellybeans
-  let g:airline_theme = 'stellarized_dark'
-  colorscheme stellarized
-else
+" Check for VIM_THEME environment variable first, then default to dark
+if exists("$VIM_THEME") && $VIM_THEME == "light"
   set background=light
   let g:airline_theme = 'stellarized_light'
   colorscheme stellarized
+else
+  " Default to dark theme
+  set background=dark
+  let g:airline_theme = 'stellarized_dark'
+  colorscheme stellarized
+  highlight Normal guibg=none
 endif
 
 
