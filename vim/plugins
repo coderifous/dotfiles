@@ -6,8 +6,6 @@ plugins=(
   https://github.com/MarcWeber/vim-addon-mw-utils.git
   https://github.com/MarcWeber/vim-addon-local-vimrc.git
   https://github.com/tomtom/tlib_vim.git
-  https://github.com/SirVer/ultisnips.git
-  https://github.com/honza/vim-snippets.git
   https://github.com/scrooloose/nerdtree.git
   https://github.com/timcharper/textile.vim.git
   https://github.com/vim-ruby/vim-ruby.git
@@ -64,8 +62,6 @@ plugins=(
 
   https://github.com/posva/vim-vue.git
   https://github.com/digitaltoad/vim-pug.git
-
-  https://github.com/neoclide/coc.nvim.git
 
   https://github.com/nanotech/jellybeans.vim.git
   https://github.com/nightsense/stellarized.git
