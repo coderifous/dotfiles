@@ -101,5 +101,9 @@ alias tmux='TERM=screen-256color tmux'
 alias target='echo $TMUX | cut -f1 -d, > .tmux-target; tmux display-message -p "#{window_id}.#{pane_id}" >> .tmux-target'
 alias t='target'
 alias vi=nvim
-alias clcl='clear; tmux clear-history'
+if [ -n "$TMUX" ]; then
+  alias clcl='clear; tmux clear-history'
+else
+  alias clcl='clear'
+fi
 alias cv="TERM=xterm-256color cdb"
