@@ -171,6 +171,22 @@ else
   highlight Normal guibg=none
 endif
 
+" Theme toggle command
+function! ToggleDark()
+  if &background == 'light'
+    set background=dark
+    let g:airline_theme = 'stellarized_dark'
+    colorscheme stellarized
+    highlight Normal guibg=none
+  else
+    set background=light
+    let g:airline_theme = 'stellarized_light'
+    colorscheme stellarized
+  endif
+  AirlineRefresh
+endfunction
+
+command! ToggleDark :call ToggleDark()
 
 " signature plugin
 " Not config for the plugin, just coloring for it.
