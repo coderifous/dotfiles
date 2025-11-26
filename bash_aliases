@@ -34,6 +34,7 @@ alias ga="git add"
 alias gb="git branch"
 alias gc="git commit -v"
 alias gca="git commit -v -a"
+alias amend="git commit --amend"
 alias gd="git diff --word-diff"
 alias gl="git pull"
 alias gp="git push"
@@ -75,6 +76,7 @@ alias ws="rbenv shell 2.7.5 && working_set"
 
 alias rc="bin/rails console"
 alias rs="bin/rails server"
+alias rdbm="bin/rails db:migrate"
 alias rgm='bin/rails generate model'
 alias tl='tail -f log/development.log'
 alias rtags='ctags -e -R app lib vendor tasks'
