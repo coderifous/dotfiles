@@ -13,8 +13,28 @@ function s:now_timestamp()
   return timestamp
 endfunction
 
+function s:current_timestamp()
+  let timestamp = strftime("%m/%d %l:%M%p")
+  let timestamp = substitute(timestamp, "^0", "", "")
+  let timestamp = substitute(timestamp, " 0", " ", "")
+  let timestamp = substitute(timestamp, "  ", " ", "g")
+  let timestamp = substitute(timestamp, "AM", "am", "")
+  let timestamp = substitute(timestamp, "PM", "pm", "")
+  return timestamp
+endfunction
+
+function s:remove_current_marker()
+  let line = getline('.')
+  if line =~ '^[ ]*[❒✔✘⍄] <<< '
+    s/<<< \(\[.\{-}\] \)\?//e
+  endif
+endfunction
+
 function STL_ToggleTodoDone(include_timestamp)
   let save_cursor  = getpos(".")
+
+  " Remove current marker if present
+  call s:remove_current_marker()
 
   " FML this didn't work for multibyte char
   " let first_char = getline('.')[col('.')-1]
@@ -82,6 +102,22 @@ function STL_ToggleTodoPushed()
   else
     execute "normal! xi".s:notdone_icon
   end
+
+  call setpos('.', save_cursor)
+endfunction
+
+function STL_ToggleTodoCurrent()
+  let save_cursor = getpos(".")
+  let line = getline('.')
+
+  " Check if line has <<< marker after checkbox (with optional timestamp)
+  if line =~ '^[ ]*[❒✔✘⍄] <<< '
+    " Remove <<< marker and optional timestamp
+    s/<<< \(\[.\{-}\] \)\?//e
+  elseif line =~ '^[ ]*[❒✔✘⍄] '
+    " Add <<< marker with timestamp after checkbox and space
+    execute 's#\(^[ ]*[❒✔✘⍄] \)#\1<<< [' . s:current_timestamp() . '] #e'
+  endif
 
   call setpos('.', save_cursor)
 endfunction

@@ -17,6 +17,7 @@ nnoremap <buffer> <silent> <Leader>m :call STL_ToggleTodoDone(1)<CR>
 nnoremap <buffer> <silent> <Leader>T :call STL_ToggleSectionTitle()<CR>
 nnoremap <buffer> <silent> <Leader>x :call STL_ToggleTodoCanceled()<CR>
 nnoremap <buffer> <silent> <Leader>> :call STL_ToggleTodoPushed()<CR>
+nnoremap <buffer> <silent> <Leader>c :call STL_ToggleTodoCurrent()<CR>
 
 nnoremap <buffer> <C-n> /^----<CR><CR>
 nnoremap <buffer> <C-p> ?^----<CR>n<CR>
